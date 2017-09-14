@@ -1,0 +1,29 @@
+body {
+    margin: 0 auto;
+}
+
+.container {
+    background-color: #607D8B;
+    border: 2px solid black;
+    border-radius: 5px;
+    color: white;
+    font-size: 48px;
+    margin: 100px auto;
+    width: 400px;
+}
+
+.controls {
+    display: flex;
+    justify-content: space-around;
+}
+
+.controls a {
+    color: #B5B7B7;
+    text-decoration: none;
+}
+
+.stopwatch {
+    color: #B5B7B7;
+    letter-spacing: 2px;
+    text-align: center;
+}
