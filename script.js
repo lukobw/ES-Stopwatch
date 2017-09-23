@@ -1,11 +1,13 @@
 class Stopwatch extends React.Component {
     constructor() {
         super();
-        this.running = false;
+        this.state = {
+            running: false
+        };
         this.reset();
     }
     reset() {
-        this.state = {
+        this.setState = {
             times: {
                 minutes: 0,
                 seconds: 0,
@@ -27,24 +29,29 @@ class Stopwatch extends React.Component {
         this.calculate();
     }
     calculate() {
-        let freshTimes = {
-            miliseconds: this.state.times.miliseconds,
-            seconds: this.state.times.seconds,
-            minutes: this.state.times.minutes
-        };
-        freshTimes.miliseconds += 1;
+        this.setState(stateBefore => {
+            let {
+                miliseconds,
+                seconds,
+                minutes
+            } = stateBefore.times;
 
-        if (freshTimes.miliseconds >= 100) {
-                freshTimes.seconds += 1;
-                freshTimes.miliseconds = 0;
-        }
-        if (freshTimes.seconds >= 60) {
-                freshTimes.minutes += 1;
-                freshTimes.seconds = 0;
-        }
-        this.setState (stateBefore => {
+            miliseconds += 1;
+
+            if (miliseconds >= 100) {
+                seconds += 1;
+                miliseconds = 0;
+            }
+            if (seconds >= 60) {
+                minutes += 1;
+                seconds = 0;
+            }
             return {
-                times: freshTimes
+                times: {
+                    miliseconds,
+                    seconds,
+                    minutes
+                }
             };
         });
     }
@@ -53,18 +60,17 @@ class Stopwatch extends React.Component {
         clearInterval(this.watch);
     }
     render() {
-        const runningStopwatch = this.running ? 'running' : '';
-            return (
-                <div className='container'>
-                <nav className='buttons'>
-                    <button onClick={(elem) => this.start(elem)}>Start</button>
-                    <button onClick={(elem) => this.stop(elem)}>Stop</button>
-                </nav>
-                <div className={'stopwatch ' + runningStopwatch}>
-                {this.format(this.state.times)}
-                </div>      
-                </div>
-            );
+        return (
+            <div className='container'>
+            <nav className='buttons'>
+                <button onClick={(elem) => this.start(elem)}>Start</button>
+                <button onClick={(elem) => this.stop(elem)}>Stop</button>
+            </nav>
+            <div className={'stopwatch ' + runningStopwatch}>
+            {this.format(this.state.times)}
+            </div>      
+            </div>
+        );
     }
 }
 
