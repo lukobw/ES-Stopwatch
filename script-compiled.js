@@ -1,6 +1,7 @@
 class Stopwatch extends React.Component {
     constructor() {
         super();
+<<<<<<< HEAD
         this.state = {
             running: false,
             times: {
@@ -12,6 +13,13 @@ class Stopwatch extends React.Component {
     }
     reset() {
         this.setState = {
+=======
+        this.running = false;
+        this.reset();
+    }
+    reset() {
+        this.state = {
+>>>>>>> 3f6a0da79528eb497fd505fe74de5a7bbe466637
             times: {
                 minutes: 0,
                 seconds: 0,
@@ -33,6 +41,7 @@ class Stopwatch extends React.Component {
         this.calculate();
     }
     calculate() {
+<<<<<<< HEAD
         this.setState(stateBefore => {
             let {
                 miliseconds,
@@ -56,6 +65,26 @@ class Stopwatch extends React.Component {
                     seconds,
                     minutes
                 }
+=======
+        let freshTimes = {
+            miliseconds: this.state.times.miliseconds,
+            seconds: this.state.times.seconds,
+            minutes: this.state.times.minutes
+        };
+        freshTimes.miliseconds += 1;
+
+        if (freshTimes.miliseconds >= 100) {
+            freshTimes.seconds += 1;
+            freshTimes.miliseconds = 0;
+        }
+        if (freshTimes.seconds >= 60) {
+            freshTimes.minutes += 1;
+            freshTimes.seconds = 0;
+        }
+        this.setState(stateBefore => {
+            return {
+                times: freshTimes
+>>>>>>> 3f6a0da79528eb497fd505fe74de5a7bbe466637
             };
         });
     }
@@ -64,7 +93,11 @@ class Stopwatch extends React.Component {
         clearInterval(this.watch);
     }
     render() {
+<<<<<<< HEAD
         const runningStopwatch = this.state.running ? 'running' : '';
+=======
+        const runningStopwatch = this.running ? 'running' : '';
+>>>>>>> 3f6a0da79528eb497fd505fe74de5a7bbe466637
         return React.createElement(
             'div',
             { className: 'container' },
