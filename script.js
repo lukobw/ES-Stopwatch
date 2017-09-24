@@ -2,16 +2,7 @@ class Stopwatch extends React.Component {
     constructor() {
         super();
         this.state = {
-<<<<<<< HEAD
             running: false,
-=======
-            running: false
-        };
-        this.reset();
-    }
-    reset() {
-        this.setState = {
->>>>>>> 3f6a0da79528eb497fd505fe74de5a7bbe466637
             times: {
                 minutes: 0,
                 seconds: 0,
@@ -19,7 +10,6 @@ class Stopwatch extends React.Component {
             }
         };
     }
-<<<<<<< HEAD
     reset() {
         this.setState = ({
             times: {
@@ -29,8 +19,6 @@ class Stopwatch extends React.Component {
             }
         });
     }
-=======
->>>>>>> 3f6a0da79528eb497fd505fe74de5a7bbe466637
     format(times) {
         return `${pad0(times.minutes)}:${pad0(times.seconds)}:${pad0(Math.floor(times.miliseconds))}`;
     }
