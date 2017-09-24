@@ -64,10 +64,7 @@ class Stopwatch extends React.Component {
         clearInterval(this.watch);
     }
     render() {
-<<<<<<< HEAD
         const runningStopwatch = this.state.running ? 'running' : '';
-=======
->>>>>>> 3f6a0da79528eb497fd505fe74de5a7bbe466637
         return (
             <div className='container'>
             <nav className='buttons'>
